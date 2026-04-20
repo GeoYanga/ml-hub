@@ -20,14 +20,24 @@ html, body {
   font-family: var(--font);
 }
 
-/* grid background */
+/* ── GRID BACKGROUND ── */
 body::before {
   content: '';
   position: fixed; inset: 0;
   background-image:
-    linear-gradient(rgba(0,212,255,.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,212,255,.04) 1px, transparent 1px);
-  background-size: 60px 60px;
+    linear-gradient(rgba(0, 212, 255, 0.18) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 212, 255, 0.18) 1px, transparent 1px);
+  background-size: 50px 50px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── GRID DOT at intersections ── */
+body::after {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: radial-gradient(circle, rgba(0, 212, 255, 0.35) 1px, transparent 1px);
+  background-size: 50px 50px;
   pointer-events: none;
   z-index: 0;
 }
@@ -48,6 +58,8 @@ body::before {
   justify-content: space-between;
   padding: 1.5rem 2.5rem;
   border-bottom: 1px solid var(--border);
+  background: rgba(4, 6, 13, 0.6);
+  backdrop-filter: blur(10px);
 }
 
 .logo {
@@ -71,10 +83,11 @@ body::before {
 .card {
   width: 100%;
   max-width: 420px;
-  background: var(--surface);
+  background: rgba(13, 18, 38, 0.85);
   border: 1px solid var(--border);
   border-radius: 8px;
   overflow: hidden;
+  backdrop-filter: blur(12px);
 }
 
 .card-body { padding: 2rem; }
@@ -92,7 +105,7 @@ body::before {
 
 .input {
   width: 100%;
-  background: var(--bg);
+  background: rgba(4, 6, 13, 0.8);
   border: 1px solid var(--border);
   border-radius: 4px;
   padding: .8rem 1rem;
@@ -206,7 +219,7 @@ body::before {
   from { opacity: 0; transform: translateY(20px); }
   to   { opacity: 1; transform: translateY(0); }
 }
-.fade { animation: fadeUp .6s ease both; }
+.fade   { animation: fadeUp .6s ease both; }
 .fade-1 { animation: fadeUp .6s .1s ease both; }
 .fade-2 { animation: fadeUp .6s .2s ease both; }
 .fade-3 { animation: fadeUp .6s .3s ease both; }
